@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour {
+public class SaveScore : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+    void Start () {
 		
 	}
 	

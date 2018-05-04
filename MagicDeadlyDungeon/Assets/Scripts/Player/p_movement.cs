@@ -6,7 +6,7 @@ using UnityEngine;
 public class p_movement : MonoBehaviour {
 
     public float speed = 10f;
-
+    public int hp;
     private Vector3 targetPosition;
     private bool isMoving;
 
@@ -22,18 +22,21 @@ public class p_movement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+            Destroy(this.gameObject);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
         if (Physics.Raycast(ray, out hitInfo, 30f))
         {
+            
             Debug.DrawLine(ray.origin, hitInfo.point, Color.green, 0.01f);
             if (Input.GetMouseButton(0))
                 SetTargetPosition();
-
             if (isMoving)
                 MovePlayer();
+            
         }
         else
         {
@@ -65,6 +68,14 @@ public class p_movement : MonoBehaviour {
             isMoving = false;
 
         Debug.DrawLine(transform.position, targetPosition, Color.red);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "danger")
+        {
+           hp--;
+        }
     }
 }
 

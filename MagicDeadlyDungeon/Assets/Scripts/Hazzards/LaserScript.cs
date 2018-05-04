@@ -39,7 +39,7 @@ public class LaserScript : MonoBehaviour {
             activate = false;
         }
 
-        if (activate == true) // Si quieres que sea por tiempo anade un timer y cambia esto
+        if (activate == true) 
         {
             StopCoroutine("FireLaser");
             StartCoroutine("FireLaser");
