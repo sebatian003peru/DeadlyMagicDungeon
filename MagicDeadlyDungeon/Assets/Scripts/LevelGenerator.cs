@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour {
     public GameObject[] roomAvalaible;
     public GameObject testing;
     int roomIndex;
-    Transform roomSpawn;
+    public Transform roomSpawn;
     public int totalRoomsSpawned = 0;
 
 
@@ -50,14 +50,14 @@ public class LevelGenerator : MonoBehaviour {
 
 	public void GenerateStage()
 	{
-        roomSpawn = GameObject.FindGameObjectWithTag("spawner").GetComponent<Transform>();
-        roomIndex = Random.Range(0,(roomAvalaible.Length)+1);
-		Vector3 starPosition = roomSpawn.transform.position;
-		Vector3 position = starPosition;
-		Quaternion rotation = transform.rotation;
-        GameObject clone = Instantiate(roomAvalaible[roomIndex], position, rotation);
-        position = clone.transform.Find("exit").position;
-        rotation = clone.transform.Find("exit").rotation;
+        
+        roomIndex = Random.Range(0,4);
+		//Vector3 starPosition = roomSpawn.transform.position;
+		//Vector3 position = starPosition;
+		//Quaternion rotation = transform.rotation;
+		GameObject clone = Instantiate(roomAvalaible[roomIndex], roomSpawn.position, roomSpawn.rotation);
+        //position = clone.transform.Find("exit").position;
+        //rotation = clone.transform.Find("exit").rotation;
         totalRoomsSpawned += 1;
         //foreach(int p in pattern){	
 
