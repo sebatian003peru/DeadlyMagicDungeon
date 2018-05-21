@@ -7,6 +7,7 @@ public class Golem : MonoBehaviour {
     public Transform Player;
     public float attackTime;
     public float elapsedAttack;
+
    // Vector3 lookPos;
 
 
@@ -30,21 +31,23 @@ public class Golem : MonoBehaviour {
 
         if (elapsedAttack >= attackTime)
             Player.GetComponent<p_movement>().hp = -1;
+
+
+			
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
             elapsedAttack += Time.deltaTime;
-            transform.LookAt(Player);
-
+		    transform.LookAt(Player);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
             elapsedAttack = 0;
-
+		
     }
 
 

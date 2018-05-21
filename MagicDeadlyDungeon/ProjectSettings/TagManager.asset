@@ -9,6 +9,7 @@ TagManager:
   - end
   - danger
   - exit
+  - spawner
   layers:
   - Default
   - TransparentFX
